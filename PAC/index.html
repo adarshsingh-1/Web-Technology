@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YatraMate – Plan your next yatra</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+<div class="dashboard">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="bi bi-airplane"></i>
+            YatraMate
+        </div>
+        <nav class="navigation">
+            <a href="#" class="nav-link active">
+                <i class="bi bi-house"></i>
+                Dashboard
+            </a>
+            <a href="#tickets" class="nav-link">
+                <i class="bi bi-ticket-perforated"></i>
+                My Tickets
+            </a>
+            <a href="#favorites" class="nav-link">
+                <i class="bi bi-heart"></i>
+                Favorites
+            </a>
+            <a href="#schedule" class="nav-link">
+                <i class="bi bi-calendar"></i>
+                My Schedule
+            </a>
+            <a href="#settings" class="nav-link">
+                <i class="bi bi-gear"></i>
+                Settings
+            </a>
+        </nav>
+        <a href="#" class="nav-link logout">
+            <i class="bi bi-box-arrow-right"></i>
+            Log Out
+        </a>
+    </aside>
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- HEADER -->
+        <header class="header">
+            <div>
+                <h2>Hello, Traveler!</h2>
+                <p>Welcome back, explore the world.</p>
+            </div>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text"
+                           id="searchDestination"
+                           placeholder="Search destination...">
+                </div>
+                <button class="icon-button" aria-label="Notifications">
+                    <i class="bi bi-bell"></i>
+                </button>
+            </div>
+        </header>
+        <!-- POPULAR DESTINATIONS -->
+        <section class="destination-section">
+            <div class="destination-grid">
+                <article class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80"
+                         alt="Beautiful mountain landscape">
+                    <div class="destination-info">
+                        <h3>Horseshoe</h3>
+                        <p>
+                            <i class="bi bi-geo-alt"></i>
+                            United States
+                        </p>
+                    </div>
+                </article>
+                <article class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80"
+                         alt="Beautiful ocean and mountains">
+                    <div class="destination-info">
+                        <h3>Heels Hole</h3>
+                        <p>
+                            <i class="bi bi-geo-alt"></i>
+                            Iceland
+                        </p>
+                    </div>
+                </article>
+                <article class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80"
+                         alt="Lake surrounded by mountains">
+                    <div class="destination-info">
+                        <h3>Brais</h3>
+                        <p>
+                            <i class="bi bi-geo-alt"></i>
+                            Italy
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- BEST DESTINATIONS -->
+        <section class="best-destination">
+            <div class="section-header">
+                <div>
+                    <h3>Best Destination</h3>
+                    <p>Discover beautiful places for your next trip.</p>
+                </div>
+                <button class="filter-button" id="filterButton">
+                    <i class="bi bi-sliders"></i>
+                    Filters
+                </button>
+            </div>
+            <div class="destination-list" id="destinationList">
+                <article class="destination-item"
+                         data-name="guttannen switzerland">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=300&q=80"
+                         alt="Swiss mountains">
+                    <div class="destination-details">
+                        <h4>Guttannen</h4>
+                        <p>
+                            <i class="bi bi-geo-alt"></i>
+                            Switzerland
+                        </p>
+                    </div>
+                    <div class="destination-rating">
+                        <i class="bi bi-star-fill"></i>
+                        4.8
+                    </div>
+                    <div class="destination-price">
+                        $100<span>/day</span>
+                    </div>
+                </article>
+                <article class="destination-item"
+                         data-name="moraine lake canada">
+                    <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLd9_lfTe8G8pPWHRTwbes6cygQsTwTDgI8RfmrAa6Y0afm6t3fCTF_pBD-Duug02r1-1zy0TBCjX1Nk22Fe2lLrf1ZWBE_DI_Gweo8HNZFOf10IzQwUy9gy_9J1i2TELEdpUtzI=w289-h312-n-k-no"
+                         alt="Moraine Lake">
+                    <div class="destination-details">
+                        <h4>Moraine Lake</h4>
+                        <p>
+                            <i class="bi bi-geo-alt"></i>
+                            Canada
+                        </p>
+                    </div>
+                    <div class="destination-rating">
+                        <i class="bi bi-star-fill"></i>
+                        4.9
+                    </div>
+                    <div class="destination-price">
+                        $150<span>/day</span>
+                    </div>
+                </article>
+                <article class="destination-item"
+                         data-name="ice lake nepal">
+                    <img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=300&q=80"
+                         alt="Himalayan mountain">
+                    <div class="destination-details">
+                        <h4>Ice Lake</h4>
+                        <p>
+                            <i class="bi bi-geo-alt"></i>
+                            Nepal
+                        </p>
+                    </div>
+                    <div class="destination-rating">
+                        <i class="bi bi-star-fill"></i>
+                        4.9
+                    </div>
+                    <div class="destination-price">
+                        $200<span>/day</span>
+                    </div>
+                </article>
+            </div>
+            <p id="noResults" class="no-results">
+                No destinations found.
+            </p>
+        </section>
+        <!-- PROMOTION -->
+        <section class="promotion">
+            <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=80"
+                 alt="Travelers exploring nature">
+            <div class="promotion-content">
+                <span>Special Offer</span>
+                <h3>Let's Explore the World!</h3>
+                <p>Discover amazing places and plan your next adventure.</p>
+                <button id="exploreButton">
+                    Explore Now
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+    <!-- RIGHT SIDEBAR -->
+    <aside class="right-sidebar">
+        <!-- PROFILE -->
+        <div class="profile">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80"
+                 alt="Traveler profile">
+            <div class="profile-info">
+                <h4>Travel Explorer</h4>
+                <p>Traveler Enthusiast</p>
+            </div>
+            <i class="bi bi-chevron-down"></i>
+        </div>
+        <!-- CALENDAR -->
+        <section class="calendar">
+            <div class="calendar-header">
+                <button id="prevMonth" aria-label="Previous month">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <h3 id="calendarMonth">October 2026</h3>
+                <button id="nextMonth" aria-label="Next month">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid">
+                <div class="weekday">Mo</div>
+                <div class="weekday">Tu</div>
+                <div class="weekday">We</div>
+                <div class="weekday">Th</div>
+                <div class="weekday">Fr</div>
+                <div class="weekday">Sa</div>
+                <div class="weekday">Su</div>
+            </div>
+        </section>
+        <!-- SCHEDULE -->
+        <section class="schedule" id="schedule">
+            <div class="section-header">
+                <h3>My Schedule</h3>
+            </div>
+            <article class="schedule-card">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QkchTF66484xzlw40oaTB3uLh9SH9XuQ5AQ7o2vjIlLGIT9KelPDkg1FN8d2iiLhClkOyWA-gSKXdlNqNRkGUdMiWcbxS6q18Hkjv9veTg6EYnLKIbGcERKAvomIHvgswFjB06=s1360-w1360-h1020-rw"
+                     alt="Temple">
+                <div>
+                    <h4>Shree Dwarkadhish Temple (Jagat Mandir)</h4>
+                    <p>
+                        <i class="bi bi-calendar"></i>
+                        01 Nov 2026
+                    </p>
+                </div>
+            </article>
+            <article class="schedule-card">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Riip4WlychSNePoipULcjyJ4eFM1lhV5t2l6aXoc0uwdC3t7kHVIgVDmXl-eNvOxz9LS-VWTr_dckzBO6Rghyy4eV_QsutDldsFIGpPjTbuhzSN5LzJFysb5h-q9_FodDOUBvU=s1360-w1360-h1020-rw"
+                     alt="Nageshwar Jyotirlinga Temple">
+                <div>
+                    <h4>Nageshwar Jyotirlinga Temple</h4>
+                    <p>
+                        <i class="bi bi-calendar"></i>
+                        01 Nov 2026
+                    </p>
+                </div>
+            </article>
+            <article class="schedule-card">
+                <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcMtveNYpMwhX1FJ0w3FXSyZR7jLvqfYcfwxDlGwUN9sZ3f-J0VlUwFBBwwSEEXtezrsjWUg9tKm6yX9GQll5FtdYwWXGRPn64-7qeq32wGOO1wT12LB9-IKqRO30c1U-UOMpNB=s1360-w1360-h1020-rw"
+                     alt="Gomti Ghat">
+                <div>
+                    <h4>Gomti Ghat</h4>
+                    <p>
+                        <i class="bi bi-calendar"></i>
+                        02 Nov 2026
+                    </p>
+                </div>
+            </article>
+            <article class="schedule-card">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QHmFu0F_JovTGgy4GAsCd1ci8HetRbG-vQVlooc1r593G1aqfonImx96UYlgWOCYLtkbm-mJgrnPyVCMao3norNhRy5yhMeD67B4mmhOsp86D_PGlRTWTd80XBjLe52JOGLvDqfnPFpBBu=s1360-w1360-h1020-rw"
+                     alt="Beach">
+                <div>
+                    <h4>Shivrajpur Beach</h4>
+                    <p>
+                        <i class="bi bi-calendar"></i>
+                        02 Nov 2026
+                    </p>
+                </div>
+            </article>
+        </section>
+    </aside>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
