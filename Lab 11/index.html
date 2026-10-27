@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Header and Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white p-4">
+
+        <div class="flex justify-between items-center">
+
+            <!-- Logo -->
+            <h1 class="text-2xl font-bold">ElectroHub</h1>
+
+            <!-- Navigation -->
+            <nav class="flex gap-6">
+
+                <a href="#" class="hover:text-yellow-300">Home</a>
+
+                <a href="#" class="hover:text-yellow-300">About</a>
+
+                <!-- Dropdown -->
+                <div class="relative group">
+
+                    <button class="hover:text-yellow-300">
+                        Products 
+                    </button>
+
+                    <div class="hidden group-hover:block absolute bg-white text-black p-2 w-32">
+
+                        <a href="#" class="block p-2 hover:bg-gray-200">
+                            Laptop
+                        </a>
+
+                        <a href="#" class="block p-2 hover:bg-gray-200">
+                            Mobile
+                        </a>
+
+                        <a href="#" class="block p-2 hover:bg-gray-200">
+                            Shoes
+                        </a>
+
+                    </div>
+                </div>
+
+                <a href="#" class="hover:text-yellow-300">Contact</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+</body>
+</html>
+
