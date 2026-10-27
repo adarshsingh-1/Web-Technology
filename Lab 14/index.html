@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>Quiz Application</h1>
+
+        <div id="quiz">
+            <div class="quiz-info">
+                <span id="question-number" class="question-number">Question 1 of 5</span>
+                <span id="score" class="score">Score: 0</span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progress"></div>
+            </div>
+
+            <h2 id="question"></h2>
+
+            <div id="answer-buttons"></div>
+
+            <button id="next-btn" disabled>Next Question</button>
+        </div>
+
+        <div id="result" class="hide">
+            <h2>Quiz Completed!</h2>
+            <p id="final-score"></p>
+            <p id="message"></p>
+            <button id="restart-btn">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which language is used to structure a web page?",
+                answers: [
+                    { text: "CSS", correct: false },
+                    { text: "HTML", correct: true },
+                    { text: "JavaScript", correct: false },
+                    { text: "Python", correct: false }
+                ]
+            },
+            {
+                question: "Which language is used to style a web page?",
+                answers: [
+                    { text: "HTML", correct: false },
+                    { text: "Java", correct: false },
+                    { text: "CSS", correct: true },
+                    { text: "SQL", correct: false }
+                ]
+            },
+            {
+                question: "Which language makes a web page interactive?",
+                answers: [
+                    { text: "JavaScript", correct: true },
+                    { text: "HTML", correct: false },
+                    { text: "CSS", correct: false },
+                    { text: "XML", correct: false }
+                ]
+            },
+            {
+                question: "Which HTML tag creates a hyperlink?",
+                answers: [
+                    { text: "<img>", correct: false },
+                    { text: "<p>", correct: false },
+                    { text: "<a>", correct: true },
+                    { text: "<h1>", correct: false }
+                ]
+            },
+            {
+                question: "Which symbol creates a single-line JavaScript comment?",
+                answers: [
+                    { text: "<!-- -->", correct: false },
+                    { text: "//", correct: true },
+                    { text: "##", correct: false },
+                    { text: "**", correct: false }
+                ]
+            }
+        ];
+
+        const questionElement = document.getElementById("question");
+        const answerButtons = document.getElementById("answer-buttons");
+        const nextButton = document.getElementById("next-btn");
+        const questionNumber = document.getElementById("question-number");
+        const scoreElement = document.getElementById("score");
+        const progress = document.getElementById("progress");
+        const quizElement = document.getElementById("quiz");
+        const resultElement = document.getElementById("result");
+        const finalScore = document.getElementById("final-score");
+        const message = document.getElementById("message");
+        const restartButton = document.getElementById("restart-btn");
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+
+            quizElement.classList.remove("hide");
+            resultElement.classList.add("hide");
+
+            showQuestion();
+        }
+
+        function showQuestion() {
+            resetState();
+
+            const currentQuestion = questions[currentQuestionIndex];
+
+            questionNumber.textContent =
+                `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            scoreElement.textContent = `Score: ${score}`;
+
+            progress.style.width =
+                `${(currentQuestionIndex / questions.length) * 100}%`;
+
+            questionElement.textContent = currentQuestion.question;
+
+            currentQuestion.answers.forEach(answer => {
+                const button = document.createElement("button");
+
+                button.textContent = answer.text;
+                button.classList.add("answer-btn");
+
+                button.addEventListener("click", () => {
+                    selectAnswer(button, answer.correct);
+                });
+
+                answerButtons.appendChild(button);
+            });
+        }
+
+        function resetState() {
+            nextButton.disabled = true;
+            answerButtons.innerHTML = "";
+        }
+
+        function selectAnswer(selectedButton, isCorrect) {
+            const buttons = answerButtons.querySelectorAll("button");
+
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
+
+            if (isCorrect) {
+                selectedButton.classList.add("correct");
+                score++;
+                scoreElement.textContent = `Score: ${score}`;
+            } else {
+                selectedButton.classList.add("wrong");
+
+                const correctIndex =
+                    questions[currentQuestionIndex].answers.findIndex(
+                        answer => answer.correct
+                    );
+
+                buttons[correctIndex].classList.add("correct");
+            }
+
+            nextButton.disabled = false;
+        }
+
+        function showResult() {
+            quizElement.classList.add("hide");
+            resultElement.classList.remove("hide");
+
+            finalScore.textContent =
+                `Your Score: ${score} / ${questions.length}`;
+
+            const percentage = (score / questions.length) * 100;
+
+            if (percentage === 100) {
+                message.textContent =
+                    "Excellent! You got all answers correct!";
+            } else if (percentage >= 60) {
+                message.textContent = "Good job! Keep learning!";
+            } else {
+                message.textContent =
+                    "Keep practicing. You can do better!";
+            }
+
+            progress.style.width = "100%";
+        }
+
+        nextButton.addEventListener("click", () => {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        restartButton.addEventListener("click", startQuiz);
+
+        startQuiz();
+    </script>
+
+</body>
+</html>
